@@ -1,3 +1,28 @@
 <resources>
     <string name="app_name">TandemCommunity</string>
+
+    <!-- Screen -->
+    <string name="community_title">Community</string>
+
+    <!-- Actions -->
+    <string name="action_retry">Retry</string>
+    <string name="action_dismiss">Dismiss</string>
+
+    <!-- Errors (mapped from [CommunityErrorCode]) -->
+    <string name="error_generic">Something went wrong. Please try again.</string>
+    <string name="error_load_more">Could not load more members. Please try again.</string>
+    <string name="error_network">Check your connection and try again.</string>
+    <string name="error_not_found">This page is not available.</string>
+    <string name="error_http">We couldn\'t reach the server. Please try again.</string>
+    <string name="error_api_response">Unable to load community data right now.</string>
+    <string name="error_parse">We couldn\'t read the server response.</string>
+
+    <!-- Member card -->
+    <string name="label_new_badge">NEW</string>
+    <string name="label_native">NATIVE</string>
+    <string name="label_learns">LEARNS</string>
+
+    <!-- Accessibility -->
+    <string name="content_description_like">Like</string>
+    <string name="content_description_liked">Liked</string>
 </resources>
