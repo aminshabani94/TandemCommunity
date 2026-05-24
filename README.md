@@ -89,6 +89,35 @@ UI → ViewModel → Use case → Repository → API / DataStore
   `CommunityErrorMapper` (including `UnresolvedAddressException` from Ktor CIO on Android). Strings
   live in `strings.xml` and are resolved in `CommunityErrorUi.kt`.
 
+## Architecture Decisions
+
+### Why MVI over MVVM?
+
+- Unidirectional data flow provides a single source of truth (`CommunityState`).
+- All state changes flow through clear events (`CommunityEvent`), making behavior predictable.
+- A single immutable state object reduces bugs and improves testability.
+- Pagination state, loading states, and like toggles live in one place.
+- Clear separation: events (inputs) → state reduction → UI (outputs).
+
+### Why Ktor over Retrofit?
+
+- Kotlin-native with a coroutine-first design.
+- More idiomatic DSL for a greenfield Kotlin project.
+- Built-in support for `kotlinx.serialization`.
+
+### Why Koin over Hilt?
+
+- Simpler setup for a single-module project.
+- No annotation processing; faster build times for this scope.
+- Readable DSL that fits a challenge-sized codebase.
+
+### Why manual pagination over Paging 3?
+
+- Keeps MVI state-reduction logic explicit and visible.
+- Fully testable without library abstractions (`LoadCommunityUseCaseTest`).
+- Page-size and end-of-list detection are clear in `LoadCommunityUseCase`.
+- Demonstrates understanding of the underlying pagination problem.
+
 ## Project layout
 
 ```
@@ -108,7 +137,47 @@ app/src/main/java/com/asn/tandemcommunity/
 - Instrumented / Compose UI tests were not added; coverage is unit-test focused.
 - Release builds are signed with the debug keystore so the APK is installable for review.
 
+## SOLID Principles Applied
+
+Concrete examples from this codebase:
+
+### Single Responsibility Principle
+
+- `LoadCommunityUseCase` — pagination logic and member accumulation only.
+- `CommunityRepositoryImpl` — coordinates network and local data sources only.
+- `LikeLocalDataSource` — DataStore read/write for likes only.
+- `CommunityViewModel` — UI state and event handling only.
+
+### Open/Closed Principle
+
+- `CommunityRepository` is an interface; implementations can be swapped without changing the
+  ViewModel.
+- `DomainResult` allows new failure types without modifying success-handling code paths.
+- Use cases expose stable entry points; internal implementation can evolve independently.
+
+### Liskov Substitution Principle
+
+- `DomainResult` success and failure branches are handled uniformly in the ViewModel and use cases.
+- `CommunityRepository` can be replaced with a mock in tests or a different production
+  implementation without breaking callers.
+
+### Interface Segregation Principle
+
+- Use cases expose a minimal `invoke()` (or equivalent) surface; callers do not depend on internal
+  pagination state such as the current page index.
+- `CommunityRepository` defines focused methods: `getCommunity`, `toggleLike`, `observeLikedIds`.
+- Callers depend on small contracts, not bloated interfaces.
+
+### Dependency Inversion Principle
+
+- `CommunityViewModel` depends on use cases and never on `CommunityRepositoryImpl` directly.
+- The domain layer defines `CommunityRepository`; the data layer implements it.
+- Domain has no dependencies on Android, Compose, Ktor, or DataStore.
+
 ## Feedback
+
+Comments for the Tandem team about the challenge and the submission process (not a code
+walkthrough).
 
 **The task**
 
