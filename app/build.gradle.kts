@@ -19,6 +19,9 @@ android {
 
     buildTypes {
         release {
+            // Debug signing so `assembleRelease` produces an installable APK locally.
+            // For a production keystore, use Build → Generate Signed Bundle / APK in Android Studio.
+            signingConfig = signingConfigs.getByName("debug")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),

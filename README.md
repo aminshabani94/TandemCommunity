@@ -22,13 +22,30 @@ Kotlin · Jetpack Compose · Material 3 · Coroutines · ViewModel · Ktor 3 · 
 **Prerequisites:** JDK 17, Android SDK 36 (minSdk 27)
 
 ```bash
-./gradlew assembleDebug    # debug APK
-./gradlew assembleRelease  # release APK (unsigned)
-./gradlew test             # unit tests
+./gradlew assembleDebug
+./gradlew assembleRelease
+./gradlew test
 ```
 
-Debug APK: `app/build/outputs/apk/debug/app-debug.apk`  
-Release APK: `app/build/outputs/apk/release/` (also available via GitHub Releases)
+APK outputs:
+
+| Variant | Path                                            | Install on device?                                 |
+|---------|-------------------------------------------------|----------------------------------------------------|
+| Debug   | `app/build/outputs/apk/debug/app-debug.apk`     | Yes                                                |
+| Release | `app/build/outputs/apk/release/app-release.apk` | Yes (signed with debug keystore for local testing) |
+
+To install on a connected device or emulator:
+
+```bash
+./gradlew installDebug
+```
+
+Or drag `app-debug.apk` onto the emulator.
+
+**Note:** `assembleRelease` without a signing config produces `app-release-unsigned.apk`, which
+cannot be installed (`INSTALL_PARSE_FAILED_NO_CERTIFICATES`). This project signs release builds with
+the debug keystore so reviewers can install the release APK. For a production upload, create a
+release keystore in Android Studio via **Build → Generate Signed Bundle / APK**.
 
 Open the project in Android Studio and run on an emulator or device.
 
