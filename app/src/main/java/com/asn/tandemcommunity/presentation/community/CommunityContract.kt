@@ -29,5 +29,3 @@ sealed interface CommunityEvent {
     data object RetryLoadMore : CommunityEvent
     data object DismissLoadMoreError : CommunityEvent
 }
-
-sealed interface CommunityEffect

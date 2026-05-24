@@ -5,7 +5,6 @@ import com.asn.tandemcommunity.domain.model.CommunityMember
 
 fun sampleMember(
     id: String = "1",
-    isLiked: Boolean = false,
     referenceCount: Int = 0,
 ) = CommunityMember(
     id = id,
@@ -15,7 +14,6 @@ fun sampleMember(
     nativeLanguages = listOf("en"),
     learnsLanguages = listOf("de"),
     referenceCount = referenceCount,
-    isLiked = isLiked,
 )
 
 fun sampleMemberDto(

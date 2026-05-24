@@ -146,25 +146,25 @@ private fun LanguageLabel(label: String, languages: List<String>) {
 @Preview(showBackground = true)
 @Composable
 private fun MemberCardPreview(
-    @PreviewParameter(MemberCardPreviewProvider::class) member: CommunityMember
+    @PreviewParameter(MemberCardPreviewProvider::class) preview: Pair<CommunityMember, Boolean>,
 ) {
     CommunityScreenPreviewTheme(modifier = Modifier.fillMaxWidth()) {
         MemberCard(
-            member = member,
-            isLiked = member.isLiked,
+            member = preview.first,
+            isLiked = preview.second,
             onLikeClick = {},
         )
     }
 }
 
-class MemberCardPreviewProvider : PreviewParameterProvider<CommunityMember> {
+class MemberCardPreviewProvider : PreviewParameterProvider<Pair<CommunityMember, Boolean>> {
     override val values = sequenceOf(
-        previewCommunityMemberNew,
-        previewCommunityMemberExisting
+        previewCommunityMemberNew to false,
+        previewCommunityMemberExisting to true,
     )
 
     override fun getDisplayName(index: Int): String = when (index) {
         0 -> "Member – new"
-        else -> "Member – existing"
+        else -> "Member – existing (liked)"
     }
 }

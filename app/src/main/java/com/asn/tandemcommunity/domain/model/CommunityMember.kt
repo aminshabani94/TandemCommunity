@@ -8,7 +8,6 @@ data class CommunityMember(
     val nativeLanguages: List<String>,
     val learnsLanguages: List<String>,
     val referenceCount: Int,
-    val isLiked: Boolean,
 ) {
     val isNew: Boolean get() = referenceCount == 0
 }

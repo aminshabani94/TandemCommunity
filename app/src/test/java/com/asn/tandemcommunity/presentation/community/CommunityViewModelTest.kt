@@ -165,7 +165,7 @@ class CommunityViewModelTest {
 
         val state = viewModel.viewState.value
         assertTrue(state.isLiked("7"))
-        assertFalse(state.members.single().isLiked)
+        assertEquals("7", state.members.single().id)
     }
 
     @Test

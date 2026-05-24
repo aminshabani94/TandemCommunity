@@ -10,7 +10,6 @@ val previewCommunityMemberNew = CommunityMember(
     nativeLanguages = listOf("de", "ja", "it"),
     learnsLanguages = listOf("en", "pt"),
     referenceCount = 0,
-    isLiked = false
 )
 
 val previewCommunityMemberExisting = CommunityMember(
@@ -21,10 +20,9 @@ val previewCommunityMemberExisting = CommunityMember(
     nativeLanguages = listOf("de", "ko", "it"),
     learnsLanguages = listOf("en", "pt"),
     referenceCount = 10,
-    isLiked = true
 )
 
 val previewCommunityMembers = listOf(
     previewCommunityMemberNew,
-    previewCommunityMemberExisting
+    previewCommunityMemberExisting,
 )

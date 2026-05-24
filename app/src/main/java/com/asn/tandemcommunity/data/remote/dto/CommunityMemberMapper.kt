@@ -2,7 +2,7 @@ package com.asn.tandemcommunity.data.remote.dto
 
 import com.asn.tandemcommunity.domain.model.CommunityMember
 
-fun CommunityMemberDto.toDomainModel(isLiked: Boolean = false): CommunityMember =
+fun CommunityMemberDto.toDomainModel(): CommunityMember =
     CommunityMember(
         id = id.toString(),
         name = firstName.orEmpty(),
@@ -11,5 +11,4 @@ fun CommunityMemberDto.toDomainModel(isLiked: Boolean = false): CommunityMember 
         nativeLanguages = natives,
         learnsLanguages = learns,
         referenceCount = referenceCnt,
-        isLiked = isLiked,
     )

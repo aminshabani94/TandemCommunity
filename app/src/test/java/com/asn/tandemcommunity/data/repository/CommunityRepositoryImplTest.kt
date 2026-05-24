@@ -9,7 +9,6 @@ import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
@@ -20,7 +19,7 @@ class CommunityRepositoryImplTest {
     private val repository = CommunityRepositoryImpl(api, likes)
 
     @Test
-    fun `getCommunity maps dto to domain with isLiked false`() = runTest {
+    fun `getCommunity maps dto to domain`() = runTest {
         coEvery { api.getCommunity(1) } returns DomainResult.Success(listOf(sampleMemberDto(id = 42L)))
 
         val result = repository.getCommunity(1)
@@ -29,7 +28,6 @@ class CommunityRepositoryImplTest {
         val member = (result as DomainResult.Success).data.single()
         assertEquals("42", member.id)
         assertEquals("Tobi", member.name)
-        assertFalse(member.isLiked)
         assertTrue(member.isNew)
     }
 
