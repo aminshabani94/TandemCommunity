@@ -30,8 +30,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.asn.tandemcommunity.R
 import com.asn.tandemcommunity.domain.model.CommunityError
 import com.asn.tandemcommunity.presentation.components.MemberCard
+import com.asn.tandemcommunity.presentation.preview.ProvideTandemCommunityPreview
 import com.asn.tandemcommunity.presentation.preview.previewCommunityMembers
-import com.asn.tandemcommunity.presentation.theme.CommunityScreenPreviewTheme
 import com.asn.tandemcommunity.presentation.theme.Dimens
 import com.asn.tandemcommunity.presentation.theme.TandemDivider
 import com.asn.tandemcommunity.presentation.theme.TandemListBackground
@@ -203,7 +203,7 @@ private fun ErrorView(
 private fun CommunityScreenPreview(
     @PreviewParameter(CommunityStatePreviewProvider::class) state: CommunityState,
 ) {
-    CommunityScreenPreviewTheme(modifier = Modifier.fillMaxSize()) {
+    ProvideTandemCommunityPreview(modifier = Modifier.fillMaxSize()) {
         CommunityScreenContent(state = state, sendEvent = {})
     }
 }

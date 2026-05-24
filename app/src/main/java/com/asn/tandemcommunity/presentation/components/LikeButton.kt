@@ -14,7 +14,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import com.asn.tandemcommunity.R
-import com.asn.tandemcommunity.presentation.theme.CommunityScreenPreviewTheme
+import com.asn.tandemcommunity.presentation.preview.ProvideTandemCommunityPreview
 import com.asn.tandemcommunity.presentation.theme.Dimens
 import com.asn.tandemcommunity.presentation.theme.TandemTextPrimary
 
@@ -45,7 +45,7 @@ fun LikeButton(
 private fun LikeButtonPreview(
     @PreviewParameter(LikeButtonPreviewProvider::class) isLiked: Boolean
 ) {
-    CommunityScreenPreviewTheme {
+    ProvideTandemCommunityPreview {
         LikeButton(isLiked = isLiked, onClick = {}, modifier = Modifier.padding(16.dp))
     }
 }

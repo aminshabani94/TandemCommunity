@@ -13,7 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.asn.tandemcommunity.R
-import com.asn.tandemcommunity.presentation.theme.CommunityScreenPreviewTheme
+import com.asn.tandemcommunity.presentation.preview.ProvideTandemCommunityPreview
 import com.asn.tandemcommunity.presentation.theme.TandemNewBadge
 
 @Composable
@@ -32,7 +32,7 @@ fun NewBadge(modifier: Modifier = Modifier) {
 @Preview(showBackground = true, name = "New badge")
 @Composable
 private fun NewBadgePreview() {
-    CommunityScreenPreviewTheme {
+    ProvideTandemCommunityPreview {
         NewBadge(Modifier.padding(16.dp))
     }
 }

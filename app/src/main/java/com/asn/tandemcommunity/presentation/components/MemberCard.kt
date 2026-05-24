@@ -29,9 +29,9 @@ import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.asn.tandemcommunity.R
 import com.asn.tandemcommunity.domain.model.CommunityMember
+import com.asn.tandemcommunity.presentation.preview.ProvideTandemCommunityPreview
 import com.asn.tandemcommunity.presentation.preview.previewCommunityMemberExisting
 import com.asn.tandemcommunity.presentation.preview.previewCommunityMemberNew
-import com.asn.tandemcommunity.presentation.theme.CommunityScreenPreviewTheme
 import com.asn.tandemcommunity.presentation.theme.Dimens
 import com.asn.tandemcommunity.presentation.theme.TandemTextPrimary
 import com.asn.tandemcommunity.presentation.theme.TandemTextSecondary
@@ -148,7 +148,7 @@ private fun LanguageLabel(label: String, languages: List<String>) {
 private fun MemberCardPreview(
     @PreviewParameter(MemberCardPreviewProvider::class) preview: Pair<CommunityMember, Boolean>,
 ) {
-    CommunityScreenPreviewTheme(modifier = Modifier.fillMaxWidth()) {
+    ProvideTandemCommunityPreview(modifier = Modifier.fillMaxWidth()) {
         MemberCard(
             member = preview.first,
             isLiked = preview.second,
