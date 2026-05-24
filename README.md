@@ -3,10 +3,8 @@
 Android submission for the Tandem hiring challenge: a paginated community feed backed
 by [tandem2019.web.app](https://tandem2019.web.app/api/community_1.json).
 
-**Download APK (v1.0.0):
-** [TandemCommunity.apk](https://github.com/aminshabani94/TandemCommunity/releases/download/v1.0.0/TandemCommunity.apk)  
-**Releases:
-** [github.com/aminshabani94/TandemCommunity/releases](https://github.com/aminshabani94/TandemCommunity/releases)
+**Download APK (v1.0.0):** [TandemCommunity.apk](https://github.com/aminshabani94/TandemCommunity/releases/download/v1.0.0/TandemCommunity.apk)  
+**Releases:** [github.com/aminshabani94/TandemCommunity/releases](https://github.com/aminshabani94/TandemCommunity/releases)
 
 ## Overview
 
