@@ -3,6 +3,11 @@
 Android submission for the Tandem hiring challenge: a paginated community feed backed
 by [tandem2019.web.app](https://tandem2019.web.app/api/community_1.json).
 
+**Download APK (v1.0.0):
+** [TandemCommunity.apk](https://github.com/aminshabani94/TandemCommunity/releases/download/v1.0.0/TandemCommunity.apk)  
+**Releases:
+** [github.com/aminshabani94/TandemCommunity/releases](https://github.com/aminshabani94/TandemCommunity/releases)
+
 ## Overview
 
 The app loads community members from `https://tandem2019.web.app/api/community_{page}.json` (pages
@@ -101,3 +106,30 @@ app/src/main/java/com/asn/tandemcommunity/
 - Single-screen app; Navigation Compose was not required for the challenge scope.
 - HTTP logging is enabled only in debug builds.
 - Instrumented / Compose UI tests were not added; coverage is unit-test focused.
+- Release builds are signed with the debug keystore so the APK is installable for review.
+
+## Feedback
+
+**The task**
+
+- The API shape (`response` wrapper, `natives` / `learns` arrays, `referenceCnt`) was clear once the
+  first page was opened; a short sample JSON link in the brief would have saved initial setup time.
+- Four pages with a short last page was a good way to test pagination without an oversized dataset.
+- Like-on-card-tap plus persistence is a realistic, focused scope for a take-home.
+
+**The process**
+
+- I treated `develop` as the working branch and attached a signed installable APK via GitHub
+  Releases for reviewers.
+- Release builds are signed with the debug keystore so the APK installs without extra setup; a note
+  in the brief that an unsigned `assembleRelease` APK cannot be installed on device would help
+  future candidates.
+- I focused unit tests on pagination, errors, and likes; UI/instrumented tests were out of scope for
+  the time box I used.
+
+**Assumptions**
+
+- No design mock was provided; layout follows the challenge description and the public API’s member
+  fields.
+- Network errors are mapped to user-facing copy in the app; raw API `errorCode` values are not shown
+  to users.
